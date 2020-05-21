@@ -6,22 +6,18 @@
 <head>
   <title>Mat_4_Mat</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=-1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
   <script>
-//alert z :
-
-
 
   </script>
 </head>
 <body>
-    <div class="container-fluid">
-      <div class= "section">
+    <div class="container-fluid" >
         <div class ="row">
         <div class="col-sm-12" id="header">
         <div class="form-group" id = "header_form">
@@ -34,48 +30,23 @@
         </div> 
 
         <div class="form-group" id = "header_form">
-            <label for="sel2">Ustaw rodzaj działań:</label>
+            <label for="sel1">Ustaw rodzaj działań:</label>
             <select class="form-control" id="sel2">
-              <option value = "+">Dodawanie</option>
-              <option value = "-">Odejmowanie</option>
-              <option value = "*">Mnożenie</option>
-              <option value = "/">Dzielenie</option>
-              <option value= "clock">Zegar</option>
+              <option value = "dodawanie">Dodawanie</option>
+              <option value = "odejmowanie">Odejmowanie</option>
+              <option value = "mnozenie">Mnożenie</option>
+              <option value = "dzielenie">Dzielenie</option>
             </select>
           </div> 
     </div>
   </div>
     <script>
-            function gen(){   
-
+            function gen(){          
               var xa = document.getElementById("sel1"); 
-              var xb = document.getElementById("sel2");   
-              var xc = document.getElementsByClassName("mat_operation")
-              if (xb.value == "clock"){
-              document.getElementById("sel1").disabled = true;
-             
-
-              for (i = 1; i < 9; i++)   {
-                cl_hour = Math.floor(Math.random() * 23);
-                cl_min = Math.floor(Math.random() * 59) + 1;
-                var za = "za"
-                var po = "po"
-                if (cl_min >=30){
-
-                document.getElementById("first_value_"+i).innerHTML = za;
-                document.getElementById("mat_operation_"+i).innerHTML = 60-cl_min;
-                document.getElementById("second_value_"+i).innerHTML = cl_hour;}
-                else {
-                  document.getElementById("first_value_"+i).innerHTML = cl_min;
-                  document.getElementById("mat_operation_"+i).innerHTML = po;
-                  document.getElementById("second_value_"+i).innerHTML = cl_hour;}
-                }
-            }else{
-              document.getElementById("sel1").disabled = false;
-              var pi;
-              for (p = 0; p < xc.length; p++) {
-               xc[p].innerHTML = xb.value;
-              }
+            //   var xb = document.getElementById("sel2");   
+            //   console.log(xb.value)
+              let operation_a = "-"
+            //   if (xb.value = "odejmowanie"){document.getElementsByClassName("mat_operation").innerHTML = operation_a;}
               document.getElementById("score").innerHTML= '';
               for (i = 1; i < 9; i++)   {
                 let range = Math.floor(Math.random() * xa.value);
@@ -84,46 +55,43 @@
                 document.getElementById("second_value_"+i).innerHTML = range2;
                 document.getElementById("ans"+i).value = '';
                 document.getElementById("face"+i).innerHTML= '';
-              }}}
+                }}
                 
             function check(){
               count = 0
               for (j = 1; j < 9; j++){
                 let v1 = document.getElementById("first_value_"+j).innerHTML;
-                let v2 = document.getElementById("mat_operation_"+j).innerHTML;
-                let v3 = document.getElementById("second_value_"+j).innerHTML;
+                let v2 = document.getElementById("second_value_"+j).innerHTML;
                 let a1 = document.getElementById("ans"+j).value;
                 let a2 = document.getElementById("sel2").value;
                 v1 = parseInt(v1)
                 v2 = parseInt(v2)
                 
                 switch(a2){
-                    case "+":
+                    case "dodawanie":
                       if (v1 + v2 != a1)
                       {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
                       else{document.getElementById("face"+j).innerHTML  = "&#128512;";
                       count++}
                       break;
-                    case "-":
+                    case "odejmowanie":
                       if (v1 - v2 != a1)
                       {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
                       else{document.getElementById("face"+j).innerHTML  = "&#128512;";
                       count++}
                       break;
-                    case "*":
+                    case "mnozenie":
                       if (v1 * v2 != a1)
                       {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
                       else{document.getElementById("face"+j).innerHTML  = "&#128512;";
                       count++}
                       break;
-                    case "/":
-                      if (v1 / v2 != a1)
+                    case "dzielenie":
+                      if (v1 * v2 != a1)
                       {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
                       else{document.getElementById("face"+j).innerHTML  = "&#128512;";
                       count++}
                       break;
-                    case "clock":
-
               }
               }
               console.log(count)
@@ -148,7 +116,7 @@
                 <tbody>
                   <tr>
                     <td id="first_value_1"></td>
-                    <td class="mat_operation" id="mat_operation_1">+</td>
+                    <td class="mat_operation">+</td>
                     <td id="second_value_1"></td>
                     <td >=</td>
                     <td><div class="form-group">
@@ -158,7 +126,7 @@
                   </tr>
                   <tr>
                     <td id="first_value_2"></td>
-                    <td class="mat_operation" id="mat_operation_2">+</td>
+                    <td class="mat_operation">+</td>
                     <td id="second_value_2"></td>
                     <td>=</td>
                     <td><div class="form-group">
@@ -168,7 +136,7 @@
                   </tr>
                   <tr>
                     <td id="first_value_3"></td>
-                    <td class="mat_operation" id="mat_operation_3">+</td>
+                    <td class="mat_operation">+</td>
                     <td id="second_value_3"></td>
                     <td>=</td>
                     <td><div class="form-group">
@@ -178,7 +146,7 @@
                   </tr>
                   <tr>
                     <td id="first_value_4"></td>
-                    <td class="mat_operation" id="mat_operation_4">+</td>
+                    <td class="mat_operation">+</td>
                     <td id="second_value_4"></td>
                     <td>=</td>
                     <td><div class="form-group">
@@ -202,7 +170,7 @@
                     <tbody>
                       <tr>
                         <td id="first_value_5"></td>
-                        <td class="mat_operation"id="mat_operation_5">+</td>
+                        <td class="mat_operation">+</td>
                         <td id="second_value_5"></td>
                         <td>=</td>
                         <td><div class="form-group">
@@ -212,7 +180,7 @@
                       </tr>
                       <tr>
                         <td id="first_value_6"></td>
-                        <td class="mat_operation" id="mat_operation_6">+</td>
+                        <td class="mat_operation">+</td>
                         <td id="second_value_6"></td>
                         <td>=</td>
                         <td><div class="form-group">
@@ -222,7 +190,7 @@
                       </tr>
                       <tr>
                         <td id="first_value_7"></td>
-                        <td class="mat_operation" id="mat_operation_7">+</td>
+                        <td class="mat_operation">+</td>
                         <td id="second_value_7"></td>
                         <td>=</td>
                         <td><div class="form-group">
@@ -232,7 +200,7 @@
                       </tr>
                       <tr>
                         <td id="first_value_8"></td>
-                        <td class="mat_operation" id="mat_operation_8"> +</td>
+                        <td class="mat_operation">+</td>
                         <td id="second_value_8"></td>
                         <td>=</td>
                         <td><div class="form-group">
@@ -259,15 +227,10 @@
         <div id = "footer_buttons">
           <button type="button" class="btn btn-outline-info" onclick="gen()">Generuj</button>
           <button type="button" class="btn btn-outline-info" onclick="check()">Sprawdź</button><br>
-        </div>
         <div id = "footer_info">
-            s.jez.... v1.8</div>
     </div>
     </div>
-  </div>
-  </div>   
-</div>     
-
+  </div>     
     </body>
     </html>
 
