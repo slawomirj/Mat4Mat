@@ -1,0 +1,52 @@
+html, body {
+    height: 99%;
+    width: 99%;
+}
+.header{
+    margin: 20px;
+}
+#header_form{
+    padding-top: 4px;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+#footer_buttons{
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+#lewy{
+    margin: auto;
+    padding: 15px;
+}
+#prawy{
+    padding: 15px;
+}
+#footer_info{
+    margin: auto;
+    padding: 5px;
+
+}
+
+#score{
+    font-size: 28px;
+    text-align: center;
+    height: 40px;
+    margin: 15px;
+ }
+
+.form-control{
+    width: 50%;
+}
+
+td>p{
+    width: 10px ;
+    font-size: 24px
+}
+.section{
+    margin: 10px;
+    padding: 17px;
+}
+
+    

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow" />
+<head>
+  <title>Mat_4_Mat</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+  <script>
+//alert z :
+
+
+
+  </script>
+</head>
+<body>
+    <div class="container-fluid">
+      <div class= "section">
+        <div class ="row">
+        <div class="col-sm-12" id="header">
+        <div class="form-group" id = "header_form">
+          <label for="sel1">Ustaw zakres liczb:</label>
+          <select class="form-control" id="sel1">
+            <option value = 10>0 - 10</option>
+            <option value = 50>0 - 50</option>
+            <option value = 100>0 - 100</option>
+          </select>
+        </div> 
+
+        <div class="form-group" id = "header_form">
+            <label for="sel2">Ustaw rodzaj działań:</label>
+            <select class="form-control" id="sel2">
+              <option value = "+">Dodawanie</option>
+              <option value = "-">Odejmowanie</option>
+              <option value = "*">Mnożenie</option>
+              <option value = "/">Dzielenie</option>
+              <option value= "clock">Zegar</option>
+            </select>
+          </div> 
+    </div>
+  </div>
+    <script>
+            function gen(){   
+
+              var xa = document.getElementById("sel1"); 
+              var xb = document.getElementById("sel2");   
+              var xc = document.getElementsByClassName("mat_operation")
+              if (xb.value == "clock"){
+              document.getElementById("sel1").disabled = true;
+             
+
+              for (i = 1; i < 9; i++)   {
+                cl_hour = Math.floor(Math.random() * 23);
+                cl_min = Math.floor(Math.random() * 59) + 1;
+                var za = "za"
+                var po = "po"
+                if (cl_min >=30){
+
+                document.getElementById("first_value_"+i).innerHTML = za;
+                document.getElementById("mat_operation_"+i).innerHTML = 60-cl_min;
+                document.getElementById("second_value_"+i).innerHTML = cl_hour;}
+                else {
+                  document.getElementById("first_value_"+i).innerHTML = cl_min;
+                  document.getElementById("mat_operation_"+i).innerHTML = po;
+                  document.getElementById("second_value_"+i).innerHTML = cl_hour;}
+                }
+            }else{
+              document.getElementById("sel1").disabled = false;
+              var pi;
+              for (p = 0; p < xc.length; p++) {
+               xc[p].innerHTML = xb.value;
+              }
+              document.getElementById("score").innerHTML= '';
+              for (i = 1; i < 9; i++)   {
+                let range = Math.floor(Math.random() * xa.value);
+                document.getElementById("first_value_"+i).innerHTML = range;
+                let range2 = Math.floor(Math.random() * xa.value);
+                document.getElementById("second_value_"+i).innerHTML = range2;
+                document.getElementById("ans"+i).value = '';
+                document.getElementById("face"+i).innerHTML= '';
+              }}}
+                
+            function check(){
+              count = 0
+              for (j = 1; j < 9; j++){
+                let v1 = document.getElementById("first_value_"+j).innerHTML;
+                let v2 = document.getElementById("mat_operation_"+j).innerHTML;
+                let v3 = document.getElementById("second_value_"+j).innerHTML;
+                let a1 = document.getElementById("ans"+j).value;
+                let a2 = document.getElementById("sel2").value;
+                v1 = parseInt(v1)
+                v2 = parseInt(v2)
+                
+                switch(a2){
+                    case "+":
+                      if (v1 + v2 != a1)
+                      {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
+                      else{document.getElementById("face"+j).innerHTML  = "&#128512;";
+                      count++}
+                      break;
+                    case "-":
+                      if (v1 - v2 != a1)
+                      {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
+                      else{document.getElementById("face"+j).innerHTML  = "&#128512;";
+                      count++}
+                      break;
+                    case "*":
+                      if (v1 * v2 != a1)
+                      {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
+                      else{document.getElementById("face"+j).innerHTML  = "&#128512;";
+                      count++}
+                      break;
+                    case "/":
+                      if (v1 / v2 != a1)
+                      {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
+                      else{document.getElementById("face"+j).innerHTML  = "&#128512;";
+                      count++}
+                      break;
+                    case "clock":
+
+              }
+              }
+              console.log(count)
+              if (count == 8){
+                document.getElementById("score").innerHTML  = "&#128512; Gratuluje, wszystkie odpowiedzi są poprawne."
+
+              }
+                }
+
+
+  </script>  
+    <div class="row">
+        <div class="col-sm-6", id ="lewy"> 
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="first_value_1"></td>
+                    <td class="mat_operation" id="mat_operation_1">+</td>
+                    <td id="second_value_1"></td>
+                    <td >=</td>
+                    <td><div class="form-group">
+                        <input id="ans1" class="form-control" placeholder="wynik">
+                      </div></td>
+                      <td><p classs = "face" id = "face1"></p></td>
+                  </tr>
+                  <tr>
+                    <td id="first_value_2"></td>
+                    <td class="mat_operation" id="mat_operation_2">+</td>
+                    <td id="second_value_2"></td>
+                    <td>=</td>
+                    <td><div class="form-group">
+                        <input id="ans2" class="form-control" placeholder="wynik">
+                      </div></td>
+                      <td><p classs = "face" id = "face2"></p></td>
+                  </tr>
+                  <tr>
+                    <td id="first_value_3"></td>
+                    <td class="mat_operation" id="mat_operation_3">+</td>
+                    <td id="second_value_3"></td>
+                    <td>=</td>
+                    <td><div class="form-group">
+                        <input id="ans3" class="form-control" placeholder="wynik">
+                      </div></td>
+                      <td><p classs = "face" id = "face3"></p></td>
+                  </tr>
+                  <tr>
+                    <td id="first_value_4"></td>
+                    <td class="mat_operation" id="mat_operation_4">+</td>
+                    <td id="second_value_4"></td>
+                    <td>=</td>
+                    <td><div class="form-group">
+                        <input id="ans4" class="form-control" placeholder="wynik">
+                      </div></td>
+                      <td><p classs = "face" id = "face4"></p></td>
+                  </tr>
+                </tbody>
+              </table>
+    
+        </div>
+            <div class="col-sm-6", id ="prawy"> 
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td id="first_value_5"></td>
+                        <td class="mat_operation"id="mat_operation_5">+</td>
+                        <td id="second_value_5"></td>
+                        <td>=</td>
+                        <td><div class="form-group">
+                            <input id="ans5" class="form-control" placeholder="wynik">
+                          </div></td>
+                          <td><p classs = "face" id = "face5"></p></td>
+                      </tr>
+                      <tr>
+                        <td id="first_value_6"></td>
+                        <td class="mat_operation" id="mat_operation_6">+</td>
+                        <td id="second_value_6"></td>
+                        <td>=</td>
+                        <td><div class="form-group">
+                            <input id="ans6" class="form-control" placeholder="wynik">
+                          </div></td>
+                          <td><p classs = "face" id = "face6"></p></td>
+                      </tr>
+                      <tr>
+                        <td id="first_value_7"></td>
+                        <td class="mat_operation" id="mat_operation_7">+</td>
+                        <td id="second_value_7"></td>
+                        <td>=</td>
+                        <td><div class="form-group">
+                            <input id="ans7" class="form-control" placeholder="wynik">
+                          </div></td>
+                          <td><p classs = "face" id = "face7"></p></td>
+                      </tr>
+                      <tr>
+                        <td id="first_value_8"></td>
+                        <td class="mat_operation" id="mat_operation_8"> +</td>
+                        <td id="second_value_8"></td>
+                        <td>=</td>
+                        <td><div class="form-group">
+                            <input id="ans8" class="form-control" placeholder="wynik">
+                          </div></td>
+                          <td><p classs = "face" id = "face8"></p></td>
+                      </tr>
+                    </tbody>
+                  </table>
+               
+        
+    
+           </div>
+              
+        </div>
+        <div class ="row">
+          <div class="col-sm-12">
+            <div id="score" ></div>
+          </div>
+        </div>
+      </div>
+        <div class ="row">
+        <div class="col-sm-12" id="footer">
+        <div id = "footer_buttons">
+          <button type="button" class="btn btn-outline-info" onclick="gen()">Generuj</button>
+          <button type="button" class="btn btn-outline-info" onclick="check()">Sprawdź</button><br>
+        </div>
+        <div id = "footer_info">
+            s.jez.... v1.8</div>
+    </div>
+    </div>
+  </div>
+  </div>   
+</div>     
+
+    </body>
+    </html>
+
