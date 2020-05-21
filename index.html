@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">  
 </head>
 <body>
     <div class="container-fluid" >
@@ -38,8 +38,9 @@
   </div>
     <script>
             function gen(){          
-              var xa = document.getElementById("sel1"); 
-              let operation_a = "-"
+              let xa = document.getElementById("sel1"); 
+              let xa2 = document.getElementById("sel2").value;
+              console.log(xa2)
               document.getElementById("score").innerHTML= '';
               for (i = 1; i < 9; i++)   {
                 let range = Math.floor(Math.random() * xa.value);
@@ -48,6 +49,7 @@
                 document.getElementById("second_value_"+i).innerHTML = range2;
                 document.getElementById("ans"+i).value = '';
                 document.getElementById("face"+i).innerHTML= '';
+                document.getElementById("operation_"+i).innerHTML= xa2;
                 }}
                 
             function check(){
@@ -105,7 +107,7 @@
                 <tbody>
                   <tr>
                     <td id="first_value_1"></td>
-                    <td class="mat_operation">+</td>
+                    <td id="operation_1">+</td>
                     <td id="second_value_1"></td>
                     <td >=</td>
                     <td><div class="form-group">
@@ -115,7 +117,7 @@
                   </tr>
                   <tr>
                     <td id="first_value_2"></td>
-                    <td class="mat_operation">+</td>
+                    <td id="operation_2">+</td>
                     <td id="second_value_2"></td>
                     <td>=</td>
                     <td><div class="form-group">
@@ -125,7 +127,7 @@
                   </tr>
                   <tr>
                     <td id="first_value_3"></td>
-                    <td class="mat_operation">+</td>
+                    <td id="operation_3">+</td>
                     <td id="second_value_3"></td>
                     <td>=</td>
                     <td><div class="form-group">
@@ -135,7 +137,7 @@
                   </tr>
                   <tr>
                     <td id="first_value_4"></td>
-                    <td class="mat_operation">+</td>
+                    <td id="operation_4">+</td>
                     <td id="second_value_4"></td>
                     <td>=</td>
                     <td><div class="form-group">
@@ -158,7 +160,7 @@
                     <tbody>
                       <tr>
                         <td id="first_value_5"></td>
-                        <td class="mat_operation">+</td>
+                        <td id="operation_5">+</td>
                         <td id="second_value_5"></td>
                         <td>=</td>
                         <td><div class="form-group">
@@ -168,7 +170,7 @@
                       </tr>
                       <tr>
                         <td id="first_value_6"></td>
-                        <td class="mat_operation">+</td>
+                        <td id="operation_6">+</td>
                         <td id="second_value_6"></td>
                         <td>=</td>
                         <td><div class="form-group">
@@ -178,7 +180,7 @@
                       </tr>
                       <tr>
                         <td id="first_value_7"></td>
-                        <td class="mat_operation">+</td>
+                        <td id="operation_7">+</td>
                         <td id="second_value_7"></td>
                         <td>=</td>
                         <td><div class="form-group">
@@ -188,7 +190,7 @@
                       </tr>
                       <tr>
                         <td id="first_value_8"></td>
-                        <td class="mat_operation">+</td>
+                        <td id="operation_8">+</td>
                         <td id="second_value_8"></td>
                         <td>=</td>
                         <td><div class="form-group">
