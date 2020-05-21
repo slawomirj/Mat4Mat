@@ -12,9 +12,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
-  <script>
-
-  </script>
 </head>
 <body>
     <div class="container-fluid" >
@@ -28,14 +25,13 @@
             <option value = 100>0 - 100</option>
           </select>
         </div> 
-
         <div class="form-group" id = "header_form">
             <label for="sel1">Ustaw rodzaj działań:</label>
             <select class="form-control" id="sel2">
-              <option value = "dodawanie">Dodawanie</option>
-              <option value = "odejmowanie">Odejmowanie</option>
-              <option value = "mnozenie">Mnożenie</option>
-              <option value = "dzielenie">Dzielenie</option>
+              <option value = "+">Dodawanie</option>
+              <option value = "-">Odejmowanie</option>
+              <option value = "*">Mnożenie</option>
+              <option value = "/">Dzielenie</option>
             </select>
           </div> 
     </div>
@@ -43,10 +39,7 @@
     <script>
             function gen(){          
               var xa = document.getElementById("sel1"); 
-            //   var xb = document.getElementById("sel2");   
-            //   console.log(xb.value)
               let operation_a = "-"
-            //   if (xb.value = "odejmowanie"){document.getElementsByClassName("mat_operation").innerHTML = operation_a;}
               document.getElementById("score").innerHTML= '';
               for (i = 1; i < 9; i++)   {
                 let range = Math.floor(Math.random() * xa.value);
@@ -68,25 +61,25 @@
                 v2 = parseInt(v2)
                 
                 switch(a2){
-                    case "dodawanie":
+                    case "+":
                       if (v1 + v2 != a1)
                       {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
                       else{document.getElementById("face"+j).innerHTML  = "&#128512;";
                       count++}
                       break;
-                    case "odejmowanie":
+                    case "-":
                       if (v1 - v2 != a1)
                       {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
                       else{document.getElementById("face"+j).innerHTML  = "&#128512;";
                       count++}
                       break;
-                    case "mnozenie":
+                    case "*":
                       if (v1 * v2 != a1)
                       {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
                       else{document.getElementById("face"+j).innerHTML  = "&#128512;";
                       count++}
                       break;
-                    case "dzielenie":
+                    case "/":
                       if (v1 * v2 != a1)
                       {document.getElementById("face"+j).innerHTML  = "&#x1F615;"}
                       else{document.getElementById("face"+j).innerHTML  = "&#128512;";
@@ -94,14 +87,10 @@
                       break;
               }
               }
-              console.log(count)
               if (count == 8){
                 document.getElementById("score").innerHTML  = "&#128512; Gratuluje, wszystkie odpowiedzi są poprawne."
-
               }
                 }
-
-
   </script>  
     <div class="row">
         <div class="col-sm-6", id ="lewy"> 
@@ -156,7 +145,6 @@
                   </tr>
                 </tbody>
               </table>
-    
         </div>
             <div class="col-sm-6", id ="prawy"> 
                 <table class="table table-striped">
@@ -210,11 +198,7 @@
                       </tr>
                     </tbody>
                   </table>
-               
-        
-    
            </div>
-              
         </div>
         <div class ="row">
           <div class="col-sm-12">
